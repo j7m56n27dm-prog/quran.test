@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qur'on Hifz Test - Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --emerald: #047857;
+            --emerald-dark: #065f46;
+            --emerald-light: #10b981;
+            --gold: #b8860b;
+            --gold-light: #daa520;
+            --cream: #fffef7;
+            --cream-dark: #faf8f0;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --white: #ffffff;
+            --success: #16a34a;
+            --error: #dc2626;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .arabic-text {
+            font-family: 'Scheherazade New', 'Amiri Quran', serif;
+            direction: rtl;
+            line-height: 2.4;
+            font-size: 1.8rem;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 50%, var(--emerald-light) 100%);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Scheherazade New', serif;
+            font-size: 2rem;
+            color: var(--white);
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+        }
+
+        .nav-menu a.active {
+            background: var(--gold);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+        }
+
+        /* MAIN */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 180px);
+        }
+
+        .page-section {
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HOME PAGE */
+        .hero-section {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 100%);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-bismillah {
+            font-family: 'Scheherazade New', serif;
+            font-size: 3rem;
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        .btn-emerald {
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(4, 120, 87, 0.3);
+        }
+
+        .btn-emerald:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(4, 120, 87, 0.4);
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--emerald-dark);
+        }
+
+        .btn-light:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        /* FEATURES */
+        .features-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* JUZ SELECTION */
+        .juz-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .juz-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .juz-header p {
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        .juz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .juz-item {
+            aspect-ratio: 1;
+            background: var(--white);
+            border: 2px solid var(--cream-dark);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--emerald);
+        }
+
+        .juz-item span {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--gray);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .juz-item:hover {
+            border-color: var(--emerald);
+            background: var(--emerald);
+            color: var(--white);
+            transform: scale(1.08);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .juz-item:hover span {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .full-quran-button {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3);
+        }
+
+        .full-quran-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(184, 134, 11, 0.4);
+        }
+
+        /* TEST PAGE */
+        .test-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .test-top-bar {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 100%);
+            border-radius: 20px 20px 0 0;
+            padding: 1.5rem 2rem;
+            color: var(--white);
+        }
+
+        .test-top-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .test-title h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .test-title span {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .test-counters {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .counter-box {
+            background: rgba(255,255,255,0.15);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .counter-box .num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gold-light);
+        }
+
+        .counter-box .txt {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+        }
+
+        .progress-track {
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .test-body {
+            background: var(--white);
+            border-radius: 0 0 20px 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .question-badge {
+            display: inline-block;
+            background: var(--emerald);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-prompt {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .ayah-box {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            border: 2px solid rgba(184, 134, 11, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ayah-box .arabic-text {
+            color: var(--dark);
+            font-size: 2rem;
+        }
+
+        .answers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .answer-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--cream);
+            border: 2px solid transparent;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .answer-option:hover:not(.locked) {
+            border-color: var(--emerald);
+            background: rgba(4, 120, 87, 0.05);
+        }
+
+        .answer-option.picked {
+            border-color: var(--emerald);
+            background: rgba(4, 120, 87, 0.1);
+        }
+
+        .answer-option.right {
+            border-color: var(--success);
+            background: rgba(22, 163, 74, 0.1);
+        }
+
+        .answer-option.wrong {
+            border-color: var(--error);
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .answer-option.locked {
+            cursor: default;
+        }
+
+        .option-letter {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border: 2px solid var(--gray-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--emerald);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .answer-option.picked .option-letter {
+            background: var(--emerald);
+            border-color: var(--emerald);
+            color: var(--white);
+        }
+
+        .answer-option.right .option-letter {
+            background: var(--success);
+            border-color: var(--success);
+            color: var(--white);
+        }
+
+        .answer-option.wrong .option-letter {
+            background: var(--error);
+            border-color: var(--error);
+            color: var(--white);
+        }
+
+        .option-content {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .option-content .arabic-text {
+            font-size: 1.4rem;
+            text-align: right;
+        }
+
+        .result-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .result-feedback.show {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .result-feedback.correct {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .result-feedback.incorrect {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+
+        .test-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--cream-dark);
+        }
+
+        .next-btn {
+            display: none;
+        }
+
+        .next-btn.show {
+            display: inline-flex;
+        }
+
+        /* RESULTS PAGE */
+        .results-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .results-box {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .results-top {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .results-top h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .score-ring {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 8px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .score-ring .pct {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--gold-light);
+        }
+
+        .score-ring .lbl {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .grade-label {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .grade-label.excellent {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--white);
+        }
+
+        .grade-label.good {
+            background: linear-gradient(135deg, var(--success) 0%, #22c55e 100%);
+            color: var(--white);
+        }
+
+        .grade-label.average {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            color: var(--white);
+        }
+
+        .grade-label.poor {
+            background: linear-gradient(135deg, var(--error) 0%, #ef4444 100%);
+            color: var(--white);
+        }
+
+        .results-bottom {
+            padding: 2.5rem;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--cream);
+            border-radius: 16px;
+        }
+
+        .stat-item .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .val {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .stat-item .lbl {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+
+        .stat-item.success .val { color: var(--success); }
+        .stat-item.error .val { color: var(--error); }
+
+        .advice-box {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 2rem;
+        }
+
+        .advice-box h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .advice-box p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .results-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* WISDOM PAGE */
+        .wisdom-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .wisdom-intro h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .wisdom-intro p {
+            color: var(--gray);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .wisdom-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .wisdom-item {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .wisdom-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .wisdom-ayah-section {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 100%);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .wisdom-ayah-section .arabic-text {
+            color: var(--white);
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .surah-ref {
+            display: inline-block;
+            background: rgba(184, 134, 11, 0.3);
+            color: var(--gold-light);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .wisdom-explanation {
+            padding: 1.75rem 2rem;
+        }
+
+        .wisdom-explanation h4 {
+            color: var(--emerald-dark);
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .wisdom-explanation p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* ADVICE PAGE */
+        .advice-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .advice-intro h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .advice-intro p {
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        .advice-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .advice-item {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .advice-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .advice-num {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .advice-text h4 {
+            color: var(--dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .advice-text p {
+            color: var(--gray);
+            line-height: 1.75;
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, #022c22 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .copyright {
+            font-weight: 600;
+            color: var(--gold-light);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                gap: 0.25rem;
+            }
+
+            .nav-menu a {
+                padding: 0.6rem 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .main-container {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero-bismillah {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .test-body {
+                padding: 1.5rem;
+            }
+
+            .ayah-box .arabic-text {
+                font-size: 1.5rem;
+            }
+
+            .option-content .arabic-text {
+                font-size: 1.2rem;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .advice-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .advice-num {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-main">
+            <div class="logo" onclick="navigate('home')">
+                <div class="logo-icon">ق</div>
+                <div class="logo-text">
+                    <h1>Qur'on Hifz Test</h1>
+                    <p>Hofizlar uchun professional sinov</p>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="active" data-page="home" onclick="navigate('home')">Bosh sahifa</a></li>
+                <li><a href="#" data-page="juz-selection" onclick="navigate('juz-selection')">Juz tanlash</a></li>
+                <li><a href="#" data-page="continuation-test" onclick="navigate('continuation-test')">Davomini top</a></li>
+                <li><a href="#" data-page="wisdom" onclick="navigate('wisdom')">Hikmatlar</a></li>
+                <li><a href="#" data-page="advice" onclick="navigate('advice')">Tavsiyalar</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+
+        <!-- BOSH SAHIFA -->
+        <section id="home" class="page-section active">
+            <div class="hero-section">
+                <div class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                <h2 class="hero-title">Qur'on yodlash sinovlari</h2>
+                <p class="hero-subtitle">Hofizlar va Qur'on o'rganuvchilar uchun maxsus tayyorlangan professional test tizimi. Bilimingizni sinab ko'ring.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-gold" onclick="navigate('juz-selection')">📖 Testni boshlash</button>
+                    <button class="btn btn-outline" onclick="navigate('continuation-test')">✍️ Davomini top</button>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h2 class="section-title">Tizim imkoniyatlari</h2>
+                <p class="section-subtitle">Qur'on bilimingizni oshirish uchun barcha zarur vositalar</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>30 ta juz bo'yicha testlar</h3>
+                        <p>Har bir juz uchun alohida savollar. Istagan juzingizni tanlab, o'sha juzdan test yechishingiz mumkin.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Aniq savollar</h3>
+                        <p>Har bir savolda faqat bitta to'g'ri javob. Chalkashlik yo'q, aniq va tushunarli savollar.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✍️</div>
+                        <h3>Oyat davomini topish</h3>
+                        <p>Oyatning boshlanishi beriladi, siz uning to'g'ri davomini topasiz. Xotirani mustahkamlaydi.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Batafsil natijalar</h3>
+                        <p>Test yakunida foiz ko'rsatkichlari, to'g'ri va noto'g'ri javoblar soni hamda tavsiyalar beriladi.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💎</div>
+                        <h3>Qur'on hikmatlari</h3>
+                        <p>Qur'ondagi hikmatli oyatlar va ularning sharhlari. Ilm va ilhom manbai.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Foydali tavsiyalar</h3>
+                        <p>Qur'on yodlash va takrorlash bo'yicha amaliy maslahatlar. Tajribali hofizlardan tavsiyalar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JUZ TANLASH -->
+        <section id="juz-selection" class="page-section">
+            <div class="juz-header">
+                <h2>📖 Juz tanlang</h2>
+                <p>Test uchun kerakli juzni tanlang yoki butun Qur'ondan sinov oling</p>
+            </div>
+            <div class="juz-grid" id="juzContainer"></div>
+            <button class="full-quran-button" onclick="beginFullTest()">
+                🕋 Butun Qur'ondan test
+            </button>
+        </section>
+
+        <!-- TEST SAHIFASI -->
+        <section id="test-page" class="page-section">
+            <div class="test-wrapper">
+                <div class="test-top-bar">
+                    <div class="test-top-info">
+                        <div class="test-title">
+                            <h3 id="currentTestTitle">Juz 1 - Test</h3>
+                            <span>Har bir savolni diqqat bilan o'qing</span>
+                        </div>
+                        <div class="test-counters">
+                            <div class="counter-box">
+                                <div class="num" id="rightCount">0</div>
+                                <div class="txt">To'g'ri</div>
+                            </div>
+                            <div class="counter-box">
+                                <div class="num" id="wrongCount">0</div>
+                                <div class="txt">Xato</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="testProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="test-body">
+                    <div class="question-badge" id="questionNum">Savol 1 / 10</div>
+                    <div class="question-prompt" id="questionPrompt"></div>
+                    <div class="ayah-box">
+                        <div class="arabic-text" id="questionAyah"></div>
+                    </div>
+                    <div class="answers-list" id="answersContainer"></div>
+                    <div class="result-feedback" id="answerFeedback"></div>
+                    <div class="test-navigation">
+                        <button class="btn btn-light" onclick="navigate('juz-selection')">⬅️ Orqaga</button>
+                        <button class="btn btn-gold next-btn" id="nextQuestion" onclick="goNextQuestion()">Keyingisi ➡️</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAVOMINI TOP -->
+        <section id="continuation-test" class="page-section">
+            <div class="test-wrapper">
+                <div class="test-top-bar">
+                    <div class="test-top-info">
+                        <div class="test-title">
+                            <h3>✍️ Oyat davomini toping</h3>
+                            <span>Oyatning to'g'ri davomini belgilang</span>
+                        </div>
+                        <div class="test-counters">
+                            <div class="counter-box">
+                                <div class="num" id="contRight">0</div>
+                                <div class="txt">To'g'ri</div>
+                            </div>
+                            <div class="counter-box">
+                                <div class="num" id="contWrong">0</div>
+                                <div class="txt">Xato</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="contProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="test-body">
+                    <div class="question-badge" id="contQuestionNum">Savol 1 / 10</div>
+                    <div class="question-prompt">Quyidagi oyatning davomini toping:</div>
+                    <div class="ayah-box">
+                        <div class="arabic-text" id="contAyahStart"></div>
+                    </div>
+                    <div class="answers-list" id="contAnswersContainer"></div>
+                    <div class="result-feedback" id="contFeedback"></div>
+                    <div class="test-navigation">
+                        <button class="btn btn-light" onclick="navigate('home')">⬅️ Orqaga</button>
+                        <button class="btn btn-gold next-btn" id="contNextBtn" onclick="goNextContinuation()">Keyingisi ➡️</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NATIJALAR -->
+        <section id="results-page" class="page-section">
+            <div class="results-wrapper">
+                <div class="results-box">
+                    <div class="results-top">
+                        <h2>📊 Test natijalari</h2>
+                        <div class="score-ring">
+                            <div class="pct" id="finalPercent">0%</div>
+                            <div class="lbl">ball</div>
+                        </div>
+                        <div class="grade-label" id="finalGrade">Yaxshi</div>
+                    </div>
+                    <div class="results-bottom">
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <div class="icon">📝</div>
+                                <div class="val" id="statTotal">0</div>
+                                <div class="lbl">Jami savollar</div>
+                            </div>
+                            <div class="stat-item success">
+                                <div class="icon">✅</div>
+                                <div class="val" id="statCorrect">0</div>
+                                <div class="lbl">To'g'ri</div>
+                            </div>
+                            <div class="stat-item error">
+                                <div class="icon">❌</div>
+                                <div class="val" id="statWrong">0</div>
+                                <div class="lbl">Xato</div>
+                            </div>
+                        </div>
+                        <div class="advice-box">
+                            <h4>💡 Tavsiya</h4>
+                            <p id="resultTip"></p>
+                        </div>
+                        <div class="results-buttons">
+                            <button class="btn btn-light" onclick="navigate('juz-selection')">📖 Boshqa juz</button>
+                            <button class="btn btn-gold" onclick="retakeTest()">🔄 Qaytadan</button>
+                            <button class="btn btn-emerald" onclick="navigate('home')">🏠 Bosh sahifa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIKMATLAR -->
+        <section id="wisdom" class="page-section">
+            <div class="wisdom-intro">
+                <h2>💎 Qur'on hikmatlari</h2>
+                <p>Qur'oni Karimdagi hikmatli oyatlar va ularning ma'nolari. Iymon va ilm nurini his eting.</p>
+            </div>
+            <div class="wisdom-list" id="wisdomContainer"></div>
+        </section>
+
+        <!-- TAVSIYALAR -->
+        <section id="advice" class="page-section">
+            <div class="advice-intro">
+                <h2>📝 Qur'on yodlash tavsiyalari</h2>
+                <p>Qur'onni yodlash va mustahkamlash bo'yicha amaliy maslahatlar</p>
+            </div>
+            <div class="advice-grid" id="adviceContainer"></div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Qur'on Hifz Test - Hofizlar uchun professional sinov tizimi</p>
+        <p class="copyright">© Muhammad Daler tomonidan ishlab chiqarilgan</p>
+    </footer>
+
+    <script>
+        // ===================== MA'LUMOTLAR =====================
+
+        const juzInfo = [
+            {num: 1, name: "Alif Lam Mim"},
+            {num: 2, name: "Sayaqul"},
+            {num: 3, name: "Tilkar Rusul"},
+            {num: 4, name: "Lan Tanalu"},
+            {num: 5, name: "Wal Muhsanat"},
+            {num: 6, name: "La Yuhibbullah"},
+            {num: 7, name: "Wa Iza Sami'u"},
+            {num: 8, name: "Wa Law Annana"},
+            {num: 9, name: "Qalal Mala'u"},
+            {num: 10, name: "Wa'lamu"},
+            {num: 11, name: "Ya'taziruna"},
+            {num: 12, name: "Wa Ma Min Dabbah"},
+            {num: 13, name: "Wa Ma Ubarri'u"},
+            {num: 14, name: "Rubama"},
+            {num: 15, name: "Subhanal Lazi"},
+            {num: 16, name: "Qal Alam"},
+            {num: 17, name: "Iqtaraba"},
+            {num: 18, name: "Qad Aflaha"},
+            {num: 19, name: "Wa Qalallazina"},
+            {num: 20, name: "Amman Khalaqa"},
+            {num: 21, name: "Utlu Ma Uhiya"},
+            {num: 22, name: "Wa Man Yaqnut"},
+            {num: 23, name: "Wa Mali"},
+            {num: 24, name: "Faman Azlamu"},
+            {num: 25, name: "Ilayhi Yuraddu"},
+            {num: 26, name: "Ha Mim"},
+            {num: 27, name: "Qala Fama"},
+            {num: 28, name: "Qad Sami'a"},
+            {num: 29, name: "Tabarakal Lazi"},
+            {num: 30, name: "Amma"}
+        ];
+
+        // Savollar bazasi
+        const questionBank = {
+            1: [
+                {
+                    q: "Bu oyat qaysi suradan olingan?",
+                    ayah: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+                    choices: ["Al-Fotiha surasi", "Al-Baqara surasi", "Ali Imron surasi", "An-Niso surasi"],
+                    answer: 0
+                },
+                {
+                    q: "Fotiha surasida nechta oyat bor?",
+                    ayah: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+                    choices: ["7 ta oyat", "6 ta oyat", "5 ta oyat", "8 ta oyat"],
+                    answer: 0
+                },
+                {
+                    q: "Bu oyatda Allohdan nima so'ralmoqda?",
+                    ayah: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+                    choices: ["To'g'ri yo'lga hidoyat", "Rizq va boylik", "Gunohlardan mag'firat", "Kasallikdan shifo"],
+                    answer: 0
+                },
+                {
+                    q: "Bu oyat nimani bildiradi?",
+                    ayah: "مَالِكِ يَوْمِ الدِّينِ",
+                    choices: ["Qiyomat kunining Egasi", "Dunyoning Egasi", "Jannatning Egasi", "Osmonlarning Egasi"],
+                    answer: 0
+                },
+                {
+                    q: "Baqara surasining boshidagi harflar qaysi?",
+                    ayah: "الم ۚ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ",
+                    choices: ["Alif Lam Mim", "Ha Mim", "Ya Sin", "Alif Lam Ra"],
+                    answer: 0
+                },
+                {
+                    q: "Bu oyatda qaysi kitob haqida so'z bormoqda?",
+                    ayah: "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ",
+                    choices: ["Qur'oni Karim", "Tavrot", "Injil", "Zabur"],
+                    answer: 0
+                },
+                {
+                    q: "Muttaqiylarning birinchi sifati qaysi?",
+                    ayah: "الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ",
+                    choices: ["G'aybga iymon keltirish", "Namoz o'qish", "Zakot berish", "Ro'za tutish"],
+                    answer: 0
+                },
+                {
+                    q: "Bu oyatda kimlar haqida so'z bormoqda?",
+                    ayah: "خَتَمَ اللَّهُ عَلَىٰ قُلُوبِهِمْ",
+                    choices: ["Kofirlar", "Mo'minlar", "Munofiqlar", "Muttaqiylar"],
+                    answer: 0
+                },
+                {
+                    q: "Bu oyat qaysi surada joylashgan?",
+                    ayah: "وَإِيَّاكَ نَسْتَعِينُ",
+                    choices: ["Fotiha surasi", "Baqara surasi", "Ikhlos surasi", "Nos surasi"],
+                    answer: 0
+                },
+                {
+                    q: "G'azabga uchragan va yo'ldan ozganlar haqidagi oyat qaysi?",
+                    ayah: "غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+                    choices: ["Fotiha surasi oxiri", "Baqara surasi boshi", "Fotiha surasi boshi", "Ikhlos surasi"],
+                    answer: 0
+                }
+            ],
+            30: [
+                {
+                    q: "Bu oyat qaysi suradan?",
+                    ayah: "عَمَّ يَتَسَاءَلُونَ",
+                    choices: ["Naba' surasi", "Naziat surasi", "Abasa surasi", "Takwir surasi"],
+                    answer: 0
+                },
+                {
+                    q: "Ikhlos surasi qanday boshlanadi?",
+                    ayah: "قُلْ هُوَ اللَّهُ أَحَدٌ",
+                    choices: ["Qul huwa Allahu ahad", "Qul a'uzu birabbil falaq", "Qul a'uzu birabbin nas", "Qul ya ayyuhal kafirun"],
+                    answer: 0
+                },
+                {
+                    q: "Falaq surasi necha oyatdan iborat?",
+                    ayah: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ",
+                    choices: ["5 ta oyat", "4 ta oyat", "6 ta oyat", "3 ta oyat"],
+                    answer: 0
+                },
+                {
+                    q: "Kawthar surasi necha oyatdan iborat?",
+                    ayah: "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
+                    choices: ["3 ta oyat", "4 ta oyat", "5 ta oyat", "2 ta oyat"],
+                    answer: 0
+                },
+                {
+                    q: "Bu oyatda kim zikr qilingan?",
+                    ayah: "تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ",
+                    choices: ["Abu Lahab", "Abu Jahl", "Abu Sufyon", "Abu Talib"],
+                    answer: 0
+                },
+                {
+                    q: "Nasr surasining birinchi oyati qaysi?",
+                    ayah: "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ",
+                    choices: ["Iza jaa nasrullahi wal fath", "Inna a'taynaka", "Qul huwa Allahu", "Qul ya ayyuhal"],
+                    answer: 0
+                },
+                {
+                    q: "Bu sura qaysi nom bilan tanilgan?",
+                    ayah: "قُلْ يَا أَيُّهَا الْكَافِرُونَ",
+                    choices: ["Kafirun surasi", "Ikhlos surasi", "Nasr surasi", "Lahab surasi"],
+                    answer: 0
+                },
+                {
+                    q: "Fil surasi qaysi voqeani eslatadi?",
+                    ayah: "أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ",
+                    choices: ["Fil egalarining halokatini", "Uhud jangini", "Badr jangini", "Makka fathini"],
+                    answer: 0
+                },
+                {
+                    q: "Quraysh surasi nima haqida?",
+                    ayah: "لِإِيلَافِ قُرَيْشٍ",
+                    choices: ["Quraysh qabilasining ne'matlari", "Quraysh qabilasining janggi", "Quraysh qabilasining hijrati", "Quraysh qabilasining savdosi"],
+                    answer: 0
+                },
+                {
+                    q: "Asr surasining asosiy mavzusi nima?",
+                    ayah: "وَالْعَصْرِ إِنَّ الْإِنسَانَ لَفِي خُسْرٍ",
+                    choices: ["Inson ziyonda ekanligi va najot yo'li", "Qiyomat kunining belgilari", "Jannat ta'rifi", "Jahannam ta'rifi"],
+                    answer: 0
+                }
+            ]
+        };
+
+        // Boshqa juzlar uchun savollar generatsiya qilish
+        for (let j = 2; j <= 29; j++) {
+            if (!questionBank[j]) {
+                questionBank[j] = [
+                    {
+                        q: "Bu oyatda qanday buyruq berilgan?",
+                        ayah: "وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ",
+                        choices: ["Namoz o'qish va zakot berish", "Ro'za tutish va haj qilish", "Jihod qilish va sabr qilish", "Tavba qilish va ibodat qilish"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatning ma'nosi qanday?",
+                        ayah: "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+                        choices: ["Alloh sabrlilar bilan birga", "Alloh kuchlilar bilan birga", "Alloh boylar bilan birga", "Alloh olimlar bilan birga"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatda nima haqida so'z bormoqda?",
+                        ayah: "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+                        choices: ["Allohga tavakkul qilish", "Allohdan qo'rqish", "Allohni sevish", "Allohga ibodat qilish"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatda kimlar maqtalmoqda?",
+                        ayah: "وَالَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ",
+                        choices: ["Iymon keltirgan va yaxshi amal qilganlar", "Faqat iymon keltirganlar", "Faqat yaxshi amal qilganlar", "Olimlar"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatda qaysi xislat ta'riflangan?",
+                        ayah: "فَاصْبِرْ صَبْرًا جَمِيلًا",
+                        choices: ["Chiroyli sabr", "Chiroyli shukr", "Chiroyli taqvo", "Chiroyli tavba"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatda nima buyurilmoqda?",
+                        ayah: "فَاذْكُرُونِي أَذْكُرْكُمْ",
+                        choices: ["Allohni zikr qilish", "Namoz o'qish", "Ro'za tutish", "Sadaqa berish"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyat qaysi mavzuga oid?",
+                        ayah: "ادْعُوا رَبَّكُمْ تَضَرُّعًا وَخُفْيَةً",
+                        choices: ["Duo qilish odoblari", "Namoz o'qish usuli", "Ro'za tutish qoidalari", "Zakot berish tartibi"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatda Allohning qaysi sifati zikr qilingan?",
+                        ayah: "وَهُوَ الْغَفُورُ الرَّحِيمُ",
+                        choices: ["Mag'firatli va rahimli", "Qudratli va kuchli", "Biluvchi va eshituvchi", "Yaratuvchi va rizq beruvchi"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatda qanday va'd berilgan?",
+                        ayah: "إِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ",
+                        choices: ["Yaxshilik qiluvchilarning ajri zoe bo'lmaydi", "Namoz o'quvchilarning ajri ko'p bo'ladi", "Ro'za tutuvchilar jannatga kiradi", "Zakot beruvchilar boyiydi"],
+                        answer: 0
+                    },
+                    {
+                        q: "Bu oyatda qaysi amal ta'riflangan?",
+                        ayah: "وَأَنفِقُوا فِي سَبِيلِ اللَّهِ",
+                        choices: ["Alloh yo'lida xarajat qilish", "Alloh yo'lida namoz o'qish", "Alloh yo'lida ro'za tutish", "Alloh yo'lida haj qilish"],
+                        answer: 0
+                    }
+                ];
+            }
+        }
+
+        // Davom savollar
+        const continuationData = [
+            {
+                start: "الْحَمْدُ لِلَّهِ",
+                options: ["رَبِّ الْعَالَمِينَ", "الرَّحْمَٰنِ الرَّحِيمِ", "مَالِكِ يَوْمِ الدِّينِ", "الْوَاحِدِ الْقَهَّارِ"],
+                correct: 0
+            },
+            {
+                start: "قُلْ هُوَ اللَّهُ",
+                options: ["أَحَدٌ", "الصَّمَدُ", "وَاحِدٌ", "كَبِيرٌ"],
+                correct: 0
+            },
+            {
+                start: "إِنَّا أَعْطَيْنَاكَ",
+                options: ["الْكَوْثَرَ", "الْخَيْرَ الْكَثِيرَ", "النَّصْرَ", "الْفَتْحَ"],
+                correct: 0
+            },
+            {
+                start: "تَبَّتْ يَدَا",
+                options: ["أَبِي لَهَبٍ وَتَبَّ", "الْكَافِرِ وَهَلَكَ", "الظَّالِمِ وَخَسِرَ", "الْمُشْرِكِ وَضَلَّ"],
+                correct: 0
+            },
+            {
+                start: "إِذَا جَاءَ نَصْرُ اللَّهِ",
+                options: ["وَالْفَتْحُ", "وَالنَّصْرُ", "وَالْعِزَّةُ", "وَالْهُدَىٰ"],
+                correct: 0
+            },
+            {
+                start: "قُلْ يَا أَيُّهَا",
+                options: ["الْكَافِرُونَ", "الْمُؤْمِنُونَ", "النَّاسُ", "الْمُسْلِمُونَ"],
+                correct: 0
+            },
+            {
+                start: "أَلَمْ نَشْرَحْ لَكَ",
+                options: ["صَدْرَكَ", "قَلْبَكَ", "أَمْرَكَ", "طَرِيقَكَ"],
+                correct: 0
+            },
+            {
+                start: "وَالْعَصْرِ إِنَّ الْإِنسَانَ",
+                options: ["لَفِي خُسْرٍ", "لَفِي ضَلَالٍ", "لَفِي غَفْلَةٍ", "لَفِي كُفْرٍ"],
+                correct: 0
+            },
+            {
+                start: "إِنَّا أَنزَلْنَاهُ فِي",
+                options: ["لَيْلَةِ الْقَدْرِ", "شَهْرِ رَمَضَانَ", "لَيْلَةٍ مُبَارَكَةٍ", "يَوْمٍ مَعْلُومٍ"],
+                correct: 0
+            },
+            {
+                start: "اقْرَأْ بِاسْمِ رَبِّكَ",
+                options: ["الَّذِي خَلَقَ", "الَّذِي عَلَّمَ", "الَّذِي هَدَىٰ", "الَّذِي رَزَقَ"],
+                correct: 0
+            },
+            {
+                start: "الرَّحْمَٰنِ",
+                options: ["الرَّحِيمِ", "الْكَرِيمِ", "الْعَظِيمِ", "الْحَكِيمِ"],
+                correct: 0
+            },
+            {
+                start: "إِيَّاكَ نَعْبُدُ",
+                options: ["وَإِيَّاكَ نَسْتَعِينُ", "وَإِيَّاكَ نَسْأَلُ", "وَإِيَّاكَ نَرْجُو", "وَإِيَّاكَ نَخَافُ"],
+                correct: 0
+            }
+        ];
+
+        // Hikmatlar
+        const wisdomItems = [
+            {
+                ayah: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ",
+                ref: "Talaq surasi, 2-3-oyatlar",
+                title: "Taqvo va rizq",
+                text: "Kim Allohdan qo'rqsa, U unga qiyinchilikdan chiqish yo'lini ko'rsatadi va kutilmagan joydan rizq beradi. Taqvo barcha yaxshiliklarning kaliti."
+            },
+            {
+                ayah: "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+                ref: "Sharh surasi, 5-6-oyatlar",
+                title: "Qiyinchilik bilan osonlik",
+                text: "Albatta qiyinchilik bilan birga osonlik bor. Bu oyat ikki marta takrorlanib, har bir qiyinchilik ortida albatta yengillik borligini ta'kidlaydi."
+            },
+            {
+                ayah: "وَقُل رَّبِّ زِدْنِي عِلْمًا",
+                ref: "Toha surasi, 114-oyat",
+                title: "Ilm so'rash",
+                text: "Payg'ambarimizga ilmni ziyoda qilishni so'rash buyurilgan. Bu ilm talab qilishning qadr-qimmatini ko'rsatadi."
+            },
+            {
+                ayah: "وَاصْبِرْ فَإِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ",
+                ref: "Hud surasi, 115-oyat",
+                title: "Sabr va mukofot",
+                text: "Sabr qil, chunki Alloh yaxshilik qiluvchilarning ajrini zoe qilmaydi. Sabr eng ulug' fazilatlardan biridir."
+            },
+            {
+                ayah: "وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ",
+                ref: "Zariyot surasi, 55-oyat",
+                title: "Eslatmaning foydasi",
+                text: "Eslatgil, chunki eslatma mo'minlarga foyda beradi. Nasihat qilish va nasihat qabul qilish mo'minlik alomatidir."
+            },
+            {
+                ayah: "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+                ref: "Baqara surasi, 153-oyat",
+                title: "Sabrlilar bilan birga",
+                text: "Albatta Alloh sabr qiluvchilar bilan birgadir. Bu qisqa oyat sabrning buyukligini anglatadi."
+            },
+            {
+                ayah: "وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ إِنَّهُ لَا يَيْأَسُ مِن رَّوْحِ اللَّهِ إِلَّا الْقَوْمُ الْكَافِرُونَ",
+                ref: "Yusuf surasi, 87-oyat",
+                title: "Umidsizlik harom",
+                text: "Allohning rahmatidan umidingizni uzmang. Faqat kofirlar Allohning rahmatidan umid uzadi. Doimo umid bilan yashang."
+            },
+            {
+                ayah: "ادْعُونِي أَسْتَجِبْ لَكُمْ",
+                ref: "G'ofir surasi, 60-oyat",
+                title: "Duoning qabul bo'lishi",
+                text: "Menga duo qilinglar, Men sizlarga ijobat qilaman. Alloh duolarni qabul qilishini va'da qilgan."
+            },
+            {
+                ayah: "وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ",
+                ref: "Isro surasi, 82-oyat",
+                title: "Qur'on - shifo",
+                text: "Qur'ondan mo'minlar uchun shifo va rahmat bo'lgan narsalarni nozil qilamiz. Qur'on ruhiy va jismoniy kasalliklar uchun davodir."
+            },
+            {
+                ayah: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",
+                ref: "Ra'd surasi, 28-oyat",
+                title: "Qalblar xotirjam bo'lishi",
+                text: "Ogoh bo'linglar, Allohni zikr qilish bilan qalblar xotirjam bo'ladi. Haqiqiy oromlik faqat Allohni yod etishdadir."
+            }
+        ];
+
+        // Tavsiyalar
+        const adviceItems = [
+            {
+                title: "Muntazam vaqt belgilang",
+                text: "Har kuni bir xil vaqtda, bir xil joyda yodlashni odat qiling. Eng yaxshi vaqt bomdod namozidan keyin yoki tong otishidan oldingi soatlardir."
+            },
+            {
+                title: "Oz-ozdan, lekin puxta yodlang",
+                text: "Kuniga yarim sahifa yodlab puxta qilish, bir sahifa yodlab unutishdan yaxshiroqdir. Sifatga e'tibor bering, miqdorga emas."
+            },
+            {
+                title: "Ma'nosini tushunib yodlang",
+                text: "Oyatlarning ma'nosini bilib yodlash eslab qolishni osonlashtiradi. Tafsir kitoblarini o'qing, oyatlar orasidagi bog'lanishni anglang."
+            },
+            {
+                title: "Takrorlashni unutmang",
+                text: "Yangi yodlaganingizni kuniga kamida 20 marta takrorlang. Eski yodlaganlaringizni ham muntazam muroja'a qiling."
+            },
+            {
+                title: "Bir mushafdan foydalaning",
+                text: "Doimo bir xil mushafdan o'qing. Ko'z oyatlarning sahifadagi joylashuvini eslab qoladi, bu esa yodlashni osonlashtiradi."
+            },
+            {
+                title: "Ustozdan nazorat oling",
+                text: "Tajwidga rioya qilib, ustoz nazoratida yodlang. Noto'g'ri yodlangan narsani qayta o'rganish juda qiyin."
+            },
+            {
+                title: "Tinglash orqali mustahkamlang",
+                text: "Qori qiroatlarini tinglang. Mashinada, uyda, yurganingizda tinglang. Bu eshitish xotirasini ishga soladi."
+            },
+            {
+                title: "Gunohlardan saqlananing",
+                text: "Gunohlar xotirani zaiflashtiradi. Taqvoli hayot yodlashni osonlashtiradi. Ko'zingizni, qulog'ingizni, tilingizni haromdan saqlang."
+            },
+            {
+                title: "Duo qiling",
+                text: "Yodlashdan oldin va keyin duo qiling. Allohdan yordam so'rang. Ilm Allohning ne'mati, uni so'rash kerak."
+            },
+            {
+                title: "Sabr va istiqomat",
+                text: "Hofiz bo'lish yillar talab qiladi. Ba'zan qiyin bo'ladi, lekin to'xtamang. Har bir harf uchun savob borligini unutmang."
+            }
+        ];
+
+        // ===================== HOLATLAR =====================
+        let activePage = 'home';
+        let selectedJuz = null;
+        let testQuestions = [];
+        let questionIndex = 0;
+        let rightAnswers = 0;
+        let wrongAnswers = 0;
+        let hasAnswered = false;
+        let isFullTest = false;
+
+        let contQuestions = [];
+        let contIndex = 0;
+        let contRightCount = 0;
+        let contWrongCount = 0;
+        let contHasAnswered = false;
+
+        // ===================== FUNKSIYALAR =====================
+
+        function navigate(page) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(page).classList.add('active');
+
+            document.querySelectorAll('.nav-menu a').forEach(a => {
+                a.classList.remove('active');
+                if (a.dataset.page === page) a.classList.add('active');
+            });
+
+            activePage = page;
+
+            if (page === 'continuation-test') {
+                startContinuation();
+            }
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function buildJuzGrid() {
+            const container = document.getElementById('juzContainer');
+            container.innerHTML = '';
+            juzInfo.forEach(juz => {
+                const div = document.createElement('div');
+                div.className = 'juz-item';
+                div.innerHTML = `${juz.num}<span>Juz</span>`;
+                div.onclick = () => startJuzTest(juz.num);
+                container.appendChild(div);
+            });
+        }
+
+        function startJuzTest(juzNum) {
+            selectedJuz = juzNum;
+            isFullTest = false;
+            testQuestions = shuffle([...questionBank[juzNum]]);
+            questionIndex = 0;
+            rightAnswers = 0;
+            wrongAnswers = 0;
+            hasAnswered = false;
+
+            document.getElementById('currentTestTitle').textContent = `Juz ${juzNum} - ${juzInfo[juzNum-1].name}`;
+            navigate('test-page');
+            displayQuestion();
+        }
+
+        function beginFullTest() {
+            isFullTest = true;
+            selectedJuz = null;
+            let allQ = [];
+            for (let j = 1; j <= 30; j++) {
+                if (questionBank[j]) {
+                    allQ = allQ.concat(questionBank[j]);
+                }
+            }
+            testQuestions = shuffle(allQ).slice(0, 15);
+            questionIndex = 0;
+            rightAnswers = 0;
+            wrongAnswers = 0;
+            hasAnswered = false;
+
+            document.getElementById('currentTestTitle').textContent = 'Butun Qur'ondan test';
+            navigate('test-page');
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const q = testQuestions[questionIndex];
+            const total = testQuestions.length;
+
+            document.getElementById('questionNum').textContent = `Savol ${questionIndex + 1} / ${total}`;
+            document.getElementById('questionPrompt').textContent = q.q;
+            document.getElementById('questionAyah').textContent = q.ayah;
+            document.getElementById('rightCount').textContent = rightAnswers;
+            document.getElementById('wrongCount').textContent = wrongAnswers;
+            document.getElementById('testProgress').style.width = `${(questionIndex / total) * 100}%`;
+
+            const feedback = document.getElementById('answerFeedback');
+            feedback.className = 'result-feedback';
+            feedback.textContent = '';
+
+            document.getElementById('nextQuestion').classList.remove('show');
+
+            const container = document.getElementById('answersContainer');
+            container.innerHTML = '';
+
+            const letters = ['A', 'B', 'C', 'D'];
+            q.choices.forEach((choice, idx) => {
+                const div = document.createElement('div');
+                div.className = 'answer-option';
+                div.innerHTML = `
+                    <div class="option-letter">${letters[idx]}</div>
+                    <div class="option-content">${choice}</div>
+                `;
+                div.onclick = () => pickAnswer(idx);
+                container.appendChild(div);
+            });
+
+            hasAnswered = false;
+        }
+
+        function pickAnswer(idx) {
+            if (hasAnswered) return;
+            hasAnswered = true;
+
+            const q = testQuestions[questionIndex];
+            const options = document.querySelectorAll('#answersContainer .answer-option');
+
+            options.forEach(opt => opt.classList.add('locked'));
+            options[idx].classList.add('picked');
+
+            const feedback = document.getElementById('answerFeedback');
+
+            if (idx === q.answer) {
+                rightAnswers++;
+                options[idx].classList.remove('picked');
+                options[idx].classList.add('right');
+                feedback.className = 'result-feedback correct show';
+                feedback.innerHTML = '✅ To'g'ri javob!';
+            } else {
+                wrongAnswers++;
+                options[idx].classList.remove('picked');
+                options[idx].classList.add('wrong');
+                options[q.answer].classList.add('right');
+                feedback.className = 'result-feedback incorrect show';
+                feedback.innerHTML = '❌ Noto'g'ri. To'g'ri javob ko'rsatildi.';
+            }
+
+            document.getElementById('rightCount').textContent = rightAnswers;
+            document.getElementById('wrongCount').textContent = wrongAnswers;
+
+            if (questionIndex < testQuestions.length - 1) {
+                document.getElementById('nextQuestion').classList.add('show');
+            } else {
+                setTimeout(showFinalResults, 1500);
+            }
+        }
+
+        function goNextQuestion() {
+            questionIndex++;
+            displayQuestion();
+        }
+
+        function showFinalResults() {
+            const total = testQuestions.length;
+            const pct = Math.round((rightAnswers / total) * 100);
+
+            document.getElementById('finalPercent').textContent = `${pct}%`;
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statCorrect').textContent = rightAnswers;
+            document.getElementById('statWrong').textContent = wrongAnswers;
+
+            const grade = document.getElementById('finalGrade');
+            const tip = document.getElementById('resultTip');
+
+            if (pct >= 90) {
+                grade.className = 'grade-label excellent';
+                grade.textContent = '🏆 A'lo natija';
+                tip.textContent = 'Ajoyib! Siz Qur'on bilimingizni juda yaxshi o'zlashtirgansiz. Shu yo'lda davom eting va boshqalarga ham o'rgating.';
+            } else if (pct >= 70) {
+                grade.className = 'grade-label good';
+                grade.textContent = '👍 Yaxshi';
+                tip.textContent = 'Yaxshi natija! Ozgina takrorlash bilan mukammal darajaga yetishingiz mumkin. Xatolaringizni tahlil qiling.';
+            } else if (pct >= 50) {
+                grade.className = 'grade-label average';
+                grade.textContent = '📚 O'rtacha';
+                tip.textContent = 'O'rtacha natija. Ko'proq takrorlash va diqqat bilan yodlash kerak. Qiyin joylarni alohida o'rganing.';
+            } else {
+                grade.className = 'grade-label poor';
+                grade.textContent = '💪 Ko'proq harakat kerak';
+                tip.textContent = 'Yaxshiroq tayyorgarlik zarur. Har kuni muntazam takrorlang, ustozdan yordam so'rang va sabr bilan davom eting.';
+            }
+
+            document.getElementById('testProgress').style.width = '100%';
+            navigate('results-page');
+        }
+
+        function retakeTest() {
+            if (isFullTest) {
+                beginFullTest();
+            } else if (selectedJuz) {
+                startJuzTest(selectedJuz);
+            } else {
+                navigate('juz-selection');
+            }
+        }
+
+        // Davom testlari
+        function startContinuation() {
+            contQuestions = shuffle([...continuationData]);
+            contIndex = 0;
+            contRightCount = 0;
+            contWrongCount = 0;
+            contHasAnswered = false;
+            displayContinuation();
+        }
+
+        function displayContinuation() {
+            const q = contQuestions[contIndex];
+            const total = contQuestions.length;
+
+            document.getElementById('contQuestionNum').textContent = `Savol ${contIndex + 1} / ${total}`;
+            document.getElementById('contAyahStart').textContent = q.start + ' ...';
+            document.getElementById('contRight').textContent = contRightCount;
+            document.getElementById('contWrong').textContent = contWrongCount;
+            document.getElementById('contProgress').style.width = `${(contIndex / total) * 100}%`;
+
+            const feedback = document.getElementById('contFeedback');
+            feedback.className = 'result-feedback';
+            feedback.textContent = '';
+
+            document.getElementById('contNextBtn').classList.remove('show');
+
+            const container = document.getElementById('contAnswersContainer');
+            container.innerHTML = '';
+
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, idx) => {
+                const div = document.createElement('div');
+                div.className = 'answer-option';
+                div.innerHTML = `
+                    <div class="option-letter">${letters[idx]}</div>
+                    <div class="option-content"><span class="arabic-text">${opt}</span></div>
+                `;
+                div.onclick = () => pickContinuation(idx);
+                container.appendChild(div);
+            });
+
+            contHasAnswered = false;
+        }
+
+        function pickContinuation(idx) {
+            if (contHasAnswered) return;
+            contHasAnswered = true;
+
+            const q = contQuestions[contIndex];
+            const options = document.querySelectorAll('#contAnswersContainer .answer-option');
+
+            options.forEach(opt => opt.classList.add('locked'));
+            options[idx].classList.add('picked');
+
+            const feedback = document.getElementById('contFeedback');
+
+            if (idx === q.correct) {
+                contRightCount++;
+                options[idx].classList.remove('picked');
+                options[idx].classList.add('right');
+                feedback.className = 'result-feedback correct show';
+                feedback.innerHTML = '✅ To'g'ri javob!';
+            } else {
+                contWrongCount++;
+                options[idx].classList.remove('picked');
+                options[idx].classList.add('wrong');
+                options[q.correct].classList.add('right');
+                feedback.className = 'result-feedback incorrect show';
+                feedback.innerHTML = '❌ Noto'g'ri. To'g'ri javob ko'rsatildi.';
+            }
+
+            document.getElementById('contRight').textContent = contRightCount;
+            document.getElementById('contWrong').textContent = contWrongCount;
+
+            if (contIndex < contQuestions.length - 1) {
+                document.getElementById('contNextBtn').classList.add('show');
+            } else {
+                setTimeout(() => {
+                    testQuestions = contQuestions;
+                    rightAnswers = contRightCount;
+                    wrongAnswers = contWrongCount;
+                    showFinalResults();
+                }, 1500);
+            }
+        }
+
+        function goNextContinuation() {
+            contIndex++;
+            displayContinuation();
+        }
+
+        // Hikmatlar
+        function buildWisdom() {
+            const container = document.getElementById('wisdomContainer');
+            container.innerHTML = '';
+            wisdomItems.forEach(w => {
+                const div = document.createElement('div');
+                div.className = 'wisdom-item';
+                div.innerHTML = `
+                    <div class="wisdom-ayah-section">
+                        <div class="arabic-text">${w.ayah}</div>
+                        <div class="surah-ref">${w.ref}</div>
+                    </div>
+                    <div class="wisdom-explanation">
+                        <h4>${w.title}</h4>
+                        <p>${w.text}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Tavsiyalar
+        function buildAdvice() {
+            const container = document.getElementById('adviceContainer');
+            container.innerHTML = '';
+            adviceItems.forEach((a, i) => {
+                const div = document.createElement('div');
+                div.className = 'advice-item';
+                div.innerHTML = `
+                    <div class="advice-num">${i + 1}</div>
+                    <div class="advice-text">
+                        <h4>${a.title}</h4>
+                        <p>${a.text}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Yordamchi
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        // Boshlash
+        document.addEventListener('DOMContentLoaded', function() {
+            buildJuzGrid();
+            buildWisdom();
+            buildAdvice();
+        });
+    </script>
+</body>
+</html>
